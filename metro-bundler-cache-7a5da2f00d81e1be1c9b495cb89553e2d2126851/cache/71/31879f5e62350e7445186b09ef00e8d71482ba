@@ -1,0 +1,24 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var food = [{
+    name: "Tinku's",
+    location: "Vijaynagar"
+}, {
+    name: "Cakesmith",
+    location: "Prestige Road"
+}, {
+    name: "Just My Bakes",
+    location: "AB Road"
+}, {
+    name: "Domino's",
+    location: "Sapna Sangeeta"
+}, {
+    name: "GroundBaking Company",
+    location: "BCM Heights"
+}, {
+    name: "Pind Baluchi",
+    location: "Satya Sai"
+}];
+
+exports.default = food;
