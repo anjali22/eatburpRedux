@@ -14,7 +14,7 @@ export default class HomeScreen extends React.Component{
                 <SearchBar
                     onPress={() => this._handlePressSearch()}
                 />
-
+                
                
                 
             </View>

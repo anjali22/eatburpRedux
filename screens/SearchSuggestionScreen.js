@@ -8,15 +8,17 @@ import {
     ListView,
 } from 'react-native';
 
+import { connect } from 'react-redux';
 import SearchBar from '../components/SearchBar';
 import {GloriaText} from '../components/StyledText';
 import food from '../data/food.js';
 import place from '../data/place';
-
+import {searchAction} from '../actions/search';
+import SearchListFoodItem from '../components/SearchListFoodItem';
 var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 
-export default class SearchSuggestionScreen extends React.Component{
+class SearchSuggestionScreen extends React.Component{
 
     
 
@@ -32,6 +34,11 @@ export default class SearchSuggestionScreen extends React.Component{
      
     
     search = (searchedText) => {
+
+        //todo: make it work with this.props.dispatch
+        //console.log(searchAction(searchedText));
+
+        this.props.dispatch(searchAction(searchedText));
         console.log(searchedText)
         if(this.state.underlineButton1)
          {
@@ -73,16 +80,26 @@ export default class SearchSuggestionScreen extends React.Component{
 
     renderFood = (food) => {
         return (
-          <View           
-          style= {styles.listItem}>
-            <Text 
-              style={styles.listItemText}
-              onPress={() => this._handlePressFood(food)}
-            >
-            {food.name}, {food.bestAt}</Text>
-          </View>
+        <SearchListFoodItem
+            onPress={() => this._handlePressFood(food)}
+            foodListItem={food}
+        />
         );
     };
+
+    // renderFood = (food) => {
+    //     return (
+    //       <View           
+    //       style= {styles.listItem}>
+    //         <Text 
+    //           style={styles.listItemText}
+    //           onPress={() => this._handlePressFood(food)}
+    //         >
+    //         {food.name}</Text>
+    //         <Text>{food.bestAt}</Text>
+    //       </View>
+    //     );
+    // };
 
     _handlePressFood = (food) => {
         this.props.navigation.navigate('searchDetail', { foodId: food.id });        
@@ -166,12 +183,14 @@ const styles = {
       },
     listItem: {
         backgroundColor: '#fff',
-        borderBottomWidth:2,
+        borderBottomWidth:1,
         borderBottomColor:'#f7f7f7',
         justifyContent: 'flex-start',
         padding: 5,
     },
     listItemText: {
-        fontSize: 20,
+        fontSize: 15,
     }
-}
+};
+
+export default connect()(SearchSuggestionScreen);

@@ -3,6 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import RootNavigation from './navigation/RootNavigation';
 import Expo, { Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
+import {Provider} from 'react-redux';
+import store from './config/store';
+import './reducers';
 
 export default class App extends React.Component {
 
@@ -42,8 +45,9 @@ export default class App extends React.Component {
       );
     }
     return (
-      
+      <Provider store ={store}>
         <RootNavigation />
+      </Provider>
       
     );
   }
