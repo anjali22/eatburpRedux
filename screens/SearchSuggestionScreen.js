@@ -41,6 +41,7 @@ export default class SearchSuggestionScreen extends React.Component{
               return food.name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1;
             });
             this.setState({searchedFood: searchedFood});
+            console.log('anjaliiiiiiiiiii',this.state.searchedFood);
          }
          else{
             console.log(searchedText,'second condition')
@@ -83,6 +84,11 @@ export default class SearchSuggestionScreen extends React.Component{
           </View>
         );
     };
+
+    
+    _handlePressPlace = (place) => {
+        this.props.navigation.navigate('placeDetail', { placeId: place.id });        
+    }
 
     _handlePressFood = (food) => {
         this.props.navigation.navigate('searchDetail', { foodId: food.id });        

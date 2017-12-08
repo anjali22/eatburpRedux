@@ -7,6 +7,7 @@ import ReviewScreen from '../screens/ReviewScreen';
 import SearchDetailScreen from '../screens/SearchDetailScreen';
 import SearchSuggestionScreen from '../screens/SearchSuggestionScreen';
 import SettingScreen from '../screens/SettingScreen';
+import PlaceDetailScreen from '../screens/PlaceDetailScreen';
 
 const SearchStack = StackNavigator(
     {
@@ -15,6 +16,9 @@ const SearchStack = StackNavigator(
         },
         searchDetail: {
             screen :SearchDetailScreen,           
+        },
+        placeDetail: {
+            screen :PlaceDetailScreen,           
         },
     },
         {
