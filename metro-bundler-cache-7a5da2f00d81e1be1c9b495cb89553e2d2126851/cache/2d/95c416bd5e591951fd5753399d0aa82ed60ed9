@@ -145,7 +145,7 @@ var SearchSuggestionScreen = _wrapComponent('SearchSuggestionScreen')(function (
         };
 
         _this._handlePressPlace = function (place) {
-            _this.props.navigation.navigate('placeDetail', { placeId: place.id });
+            _this.props.navigation.navigate('placeDetail', { place: place });
         };
 
         _this._handlePressFood = function (food) {

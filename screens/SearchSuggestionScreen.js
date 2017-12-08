@@ -87,7 +87,7 @@ export default class SearchSuggestionScreen extends React.Component{
 
     
     _handlePressPlace = (place) => {
-        this.props.navigation.navigate('placeDetail', { placeId: place.id });        
+        this.props.navigation.navigate('placeDetail', { place: place });        
     }
 
     _handlePressFood = (food) => {

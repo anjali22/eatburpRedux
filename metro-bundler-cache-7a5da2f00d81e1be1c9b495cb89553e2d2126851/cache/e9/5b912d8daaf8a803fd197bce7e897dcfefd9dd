@@ -16,6 +16,14 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _reactNative = require('react-native');
 
+var _place = require('../data/place');
+
+var _place2 = _interopRequireDefault(_place);
+
+var _RestaurantDetails = require('../components/RestaurantDetails');
+
+var _RestaurantDetails2 = _interopRequireDefault(_RestaurantDetails);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -60,14 +68,15 @@ var PlaceDetailScreen = _wrapComponent('PlaceDetailScreen')(function (_React$Com
         value: function render() {
             var params = this.props.navigation.state.params;
 
-            var id = params.placeId;
+            console.log("params-----------", params);
+            var id = params.place.id;
 
             return _react3.default.createElement(
                 _reactNative.View,
                 {
                     __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 23
+                        lineNumber: 27
                     }
                 },
                 _react3.default.createElement(
@@ -75,12 +84,21 @@ var PlaceDetailScreen = _wrapComponent('PlaceDetailScreen')(function (_React$Com
                     {
                         __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 24
+                            lineNumber: 28
                         }
                     },
                     ' ',
-                    id
-                )
+                    id,
+                    ' '
+                ),
+                _react3.default.createElement(_RestaurantDetails2.default, {
+
+                    restaurant: params.place,
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 29
+                    }
+                })
             );
         }
     }]);
@@ -89,3 +107,6 @@ var PlaceDetailScreen = _wrapComponent('PlaceDetailScreen')(function (_React$Com
 }(_react3.default.Component));
 
 exports.default = PlaceDetailScreen;
+
+
+var HeroHeight = 370;
