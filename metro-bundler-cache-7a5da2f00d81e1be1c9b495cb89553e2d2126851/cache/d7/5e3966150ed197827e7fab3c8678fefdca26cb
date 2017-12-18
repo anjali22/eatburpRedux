@@ -34,6 +34,10 @@ var _SettingScreen = require('../screens/SettingScreen');
 
 var _SettingScreen2 = _interopRequireDefault(_SettingScreen);
 
+var _PlaceDetailScreen = require('../screens/PlaceDetailScreen');
+
+var _PlaceDetailScreen2 = _interopRequireDefault(_PlaceDetailScreen);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var SearchStack = (0, _reactNavigation.StackNavigator)({
@@ -42,6 +46,9 @@ var SearchStack = (0, _reactNavigation.StackNavigator)({
     },
     searchDetail: {
         screen: _SearchDetailScreen2.default
+    },
+    placeDetail: {
+        screen: _PlaceDetailScreen2.default
     }
 }, {
     headerMode: 'none'

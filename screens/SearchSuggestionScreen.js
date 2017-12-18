@@ -48,6 +48,7 @@ class SearchSuggestionScreen extends React.Component{
               return food.name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1;
             });
             this.setState({searchedFood: searchedFood});
+            console.log('anjaliiiiiiiiiii',this.state.searchedFood);
          }
          else{
             console.log(searchedText,'second condition')

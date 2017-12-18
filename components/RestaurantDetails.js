@@ -12,7 +12,7 @@ import {
 import { MaterialIcons } from '@expo/vector-icons';
 import { Constants, LinearGradient } from 'expo';
 import TouchableNativeFeedback from '@expo/react-native-touchable-native-feedback-safe';
-import { withNavigation, Header, HeaderBackButton } from 'react-navigation';
+import { withNavigation, Header, HeaderBackButton } from 'react-navigation
 
 import { SummaryCard } from "./SummaryCard";
 import { BestDishCard } from "./BestDishCard";
@@ -28,6 +28,7 @@ export default class RestaurantDetails extends React.Component{
     constructor(props){
         super(props)
     }
+
 
     render = () => {
         let restaurant = this.props.restaurant;

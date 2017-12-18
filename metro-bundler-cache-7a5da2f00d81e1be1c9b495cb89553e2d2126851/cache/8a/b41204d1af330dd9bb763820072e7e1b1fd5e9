@@ -73,19 +73,6 @@ function createTabBarItemIOSComponent(IconNamePropType, getImageSource) {
     }
 
     _createClass(TabBarItemIOS, [{
-      key: 'componentWillMount',
-      value: function componentWillMount() {
-        this.updateIconSources(this.props);
-      }
-    }, {
-      key: 'componentWillReceiveProps',
-      value: function componentWillReceiveProps(nextProps) {
-        var keys = Object.keys(TabBarItemIOS.propTypes);
-        if (!(0, _isEqual2.default)((0, _pick2.default)(nextProps, keys), (0, _pick2.default)(this.props, keys))) {
-          this.updateIconSources(nextProps);
-        }
-      }
-    }, {
       key: 'updateIconSources',
       value: function updateIconSources(props) {
         var _this2 = this;
@@ -104,12 +91,25 @@ function createTabBarItemIOSComponent(IconNamePropType, getImageSource) {
         }
       }
     }, {
+      key: 'componentWillMount',
+      value: function componentWillMount() {
+        this.updateIconSources(this.props);
+      }
+    }, {
+      key: 'componentWillReceiveProps',
+      value: function componentWillReceiveProps(nextProps) {
+        var keys = Object.keys(TabBarItemIOS.propTypes);
+        if (!(0, _isEqual2.default)((0, _pick2.default)(nextProps, keys), (0, _pick2.default)(this.props, keys))) {
+          this.updateIconSources(nextProps);
+        }
+      }
+    }, {
       key: 'render',
       value: function render() {
         return _react3.default.createElement(_reactNative.TabBarIOS.Item, _extends({}, this.props, this.state, {
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 56
+            lineNumber: 55
           }
         }));
       }
