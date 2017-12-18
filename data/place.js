@@ -20,22 +20,6 @@ var place = [
             latitude: 22.761304,
             longitude: 75.887549
         }
-    },{
-        id:3,
-        name: "Just My Bakes",
-        location: "AB Road",
-    },{
-        id:4,
-        name: "Domino's",
-        location: "Sapna Sangeeta",
-    },{
-        id:5,
-        name: "GroundBaking Company",
-        location: "BCM Heights",
-    },{
-        id:6,
-        name: "Pind Baluchi",
-        location: "Satya Sai",
     }
   ];
 

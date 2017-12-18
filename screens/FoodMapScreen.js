@@ -9,8 +9,9 @@ import {
 
 import { Maps } from "../components/Maps";
 import SilverMapStyle from '../styles/SilverMapStyle.json';
+import place from "../data/place";
 
-import { MapView, Location } from "expo";
+import { MapView, Location, Permissions } from "expo";
 
 let { width, height } = Dimensions.get('window');
 
@@ -62,42 +63,32 @@ constructor(props) {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         },
-        location: null
+        location: null,
+        coordinates: [
+          {
+            latitude: 22.756743,
+            longitude: 75.887344
+          },
+          {
+            latitude: 22.761304,
+            longitude: 75.887549
+          }
+        ],
+        place
     };
   }
-
-  /* componentDidMount() {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({
-            region:{
-                latitude: Number(position.coords.latitude),
-                longitude: Number(position.coords.longitude),
-                latitudeDelta: LATITUDE_DELTA,
-                longitudeDelta: LONGITUDE_DELTA,
-                error: null,
-            }
-        },function(){
-          console.log("geolocation-----------", this.state.region)
-        });
-      },
-      (error) => this.setState({ error: error.message }),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 },
-    );
-     */
-    
-      //console.log("region----------", this.state.region.longitude)
-    //}
-
-
     componentWillMount() {
-      
-        this._getLocationAsync();
-  
+      this._getLocationAsync();
     }
   
     _getLocationAsync = async () => {
-  
+      let { status } = await Permissions.askAsync(Permissions.LOCATION);
+      if (status !== 'granted') {
+        this.setState({
+          errorMessage: 'Permission to access location was denied',
+        });
+      }
+    
       let location = await Location.getCurrentPositionAsync({enableHighAccuracy: true});
       console.log("Location---------------", location)
       this.setState({ location });
@@ -111,13 +102,12 @@ constructor(props) {
       }
       })
     };
-  
-  
 
   render() {
     let text = 'waiting....'
     text = JSON.stringify(this.state.location);
     console.log("regions------------------", this.state.region)
+    let coords = this.state.coordinates;
     return (
       <View style={styles.container}>
           <MapView style={styles.map}
@@ -127,11 +117,19 @@ constructor(props) {
             onRegionChange={ region => this.setState({region}) }
             onRegionChangeComplete={ region => this.setState({region}) }
             >
-            <MapView.Marker
-            coordinate={this.state.region.latitude ? {latitude: this.state.region.latitude, longitude: this.state.region.longitude}: this.state.initialRegion}
-            />  
-        </MapView>     
+            {this.state.place.map((coords, key) => (
+                <MapView.Marker
+                key = {key}
+                title = {coords.name}
+                coordinate={{
+                latitude: coords.coordinates.latitude,
+                longitude: coords.coordinates.longitude,
+              }}
+                ></MapView.Marker>  
+            ))}
+          </MapView>
         <Text> Latitude: {text} </Text>
+
     </View>
     );
   }
