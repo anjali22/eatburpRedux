@@ -8,15 +8,17 @@ import {
     ListView,
 } from 'react-native';
 
+import { connect } from 'react-redux';
 import SearchBar from '../components/SearchBar';
 import {GloriaText} from '../components/StyledText';
 import food from '../data/food.js';
 import place from '../data/place';
-
+import {searchAction} from '../actions/search';
+import SearchListFoodItem from '../components/SearchListFoodItem';
 var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 
-export default class SearchSuggestionScreen extends React.Component{
+class SearchSuggestionScreen extends React.Component{
 
     
 
@@ -32,6 +34,11 @@ export default class SearchSuggestionScreen extends React.Component{
      
     
     search = (searchedText) => {
+
+        //todo: make it work with this.props.dispatch
+        //console.log(searchAction(searchedText));
+
+        this.props.dispatch(searchAction(searchedText));
         console.log(searchedText)
         if(this.state.underlineButton1)
          {
@@ -180,4 +187,6 @@ const styles = {
     listItemText: {
         fontSize: 20,
     }
-}
+};
+
+export default connect()(SearchSuggestionScreen);

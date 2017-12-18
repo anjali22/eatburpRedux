@@ -42,6 +42,9 @@
     "redux": "^3.6.0",
     "redux-effex": "^1.1.2",
     "time-js": "0.0.5",
-    "prop-types": "15.6.0"
+    "redux-logger": "^3.0.1"
+    
+    
+
   }
 }

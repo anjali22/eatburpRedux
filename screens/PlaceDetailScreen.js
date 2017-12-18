@@ -25,6 +25,7 @@ export default class PlaceDetailScreen extends React.Component{
 
         return (
             <View>
+
                 <Text> {id} </Text>
                 <RestaurantDetails
                   
