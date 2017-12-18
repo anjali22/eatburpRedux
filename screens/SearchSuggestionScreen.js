@@ -80,26 +80,21 @@ class SearchSuggestionScreen extends React.Component{
 
     renderFood = (food) => {
         return (
-        <SearchListFoodItem
-            onPress={() => this._handlePressFood(food)}
-            foodListItem={food}
-        />
+          <View           
+          style= {styles.listItem}>
+            <Text 
+              style={styles.listItemText}
+              onPress={() => this._handlePressFood(food)}
+            >
+            {food.name}, {food.bestAt}</Text>
+          </View>
         );
     };
 
-    // renderFood = (food) => {
-    //     return (
-    //       <View           
-    //       style= {styles.listItem}>
-    //         <Text 
-    //           style={styles.listItemText}
-    //           onPress={() => this._handlePressFood(food)}
-    //         >
-    //         {food.name}</Text>
-    //         <Text>{food.bestAt}</Text>
-    //       </View>
-    //     );
-    // };
+    
+    _handlePressPlace = (place) => {
+        this.props.navigation.navigate('placeDetail', { place: place });        
+    }
 
     _handlePressFood = (food) => {
         this.props.navigation.navigate('searchDetail', { foodId: food.id });        
@@ -183,13 +178,13 @@ const styles = {
       },
     listItem: {
         backgroundColor: '#fff',
-        borderBottomWidth:1,
+        borderBottomWidth:2,
         borderBottomColor:'#f7f7f7',
         justifyContent: 'flex-start',
         padding: 5,
     },
     listItemText: {
-        fontSize: 15,
+        fontSize: 20,
     }
 };
 
