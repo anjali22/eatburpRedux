@@ -1,0 +1,71 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.SummaryCard = undefined;
+var _jsxFileName = '/home/anjali/eatburpRedux-master/components/SummaryCard.js';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _StyledText = require('./StyledText');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var SummaryCard = exports.SummaryCard = function (_React$Component) {
+  _inherits(SummaryCard, _React$Component);
+
+  function SummaryCard(props) {
+    _classCallCheck(this, SummaryCard);
+
+    var _this = _possibleConstructorReturn(this, (SummaryCard.__proto__ || Object.getPrototypeOf(SummaryCard)).call(this, props));
+
+    _this.render = function () {
+      var text = _this.props.text;
+      console.log("summary details-----------", text);
+      if (!text) {
+        console.log("in here------");
+        return _react2.default.createElement(_reactNative.View, {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 29
+          }
+        });
+      }
+
+      return _react2.default.createElement(
+        _reactNative.View,
+        {
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 33
+          }
+        },
+        _react2.default.createElement(
+          _StyledText.RegularText,
+          {
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 34
+            }
+          },
+          ' ',
+          text,
+          ' '
+        )
+      );
+    };
+
+    return _this;
+  }
+
+  return SummaryCard;
+}(_react2.default.Component);

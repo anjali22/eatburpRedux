@@ -1,0 +1,354 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react2 = require('react');
+
+var _react3 = _interopRequireDefault(_react2);
+
+var _index = require('./../node_modules/react-transform-hmr/lib/index.js');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _jsxFileName = '/home/anjali/eatburpRedux-master/screens/SearchSuggestionScreen.js';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _reactNative = require('react-native');
+
+var _reactRedux = require('react-redux');
+
+var _SearchBar = require('../components/SearchBar');
+
+var _SearchBar2 = _interopRequireDefault(_SearchBar);
+
+var _StyledText = require('../components/StyledText');
+
+var _food = require('../data/food.js');
+
+var _food2 = _interopRequireDefault(_food);
+
+var _place = require('../data/place');
+
+var _place2 = _interopRequireDefault(_place);
+
+var _search = require('../actions/search');
+
+var _SearchListFoodItem = require('../components/SearchListFoodItem');
+
+var _SearchListFoodItem2 = _interopRequireDefault(_SearchListFoodItem);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _components = {
+    SearchSuggestionScreen: {
+        displayName: 'SearchSuggestionScreen'
+    }
+};
+
+var _node_modulesReactTransformHmrLibIndexJs2 = (0, _index2.default)({
+    filename: '/home/anjali/eatburpRedux-master/screens/SearchSuggestionScreen.js',
+    components: _components,
+    locals: [module],
+    imports: [_react3.default]
+});
+
+function _wrapComponent(id) {
+    return function (Component) {
+        return _node_modulesReactTransformHmrLibIndexJs2(Component, id);
+    };
+}
+
+var ds = new _reactNative.ListView.DataSource({ rowHasChanged: function rowHasChanged(r1, r2) {
+        return r1 !== r2;
+    } });
+
+var SearchSuggestionScreen = _wrapComponent('SearchSuggestionScreen')(function (_React$Component) {
+    _inherits(SearchSuggestionScreen, _React$Component);
+
+    function SearchSuggestionScreen(props) {
+        _classCallCheck(this, SearchSuggestionScreen);
+
+        var _this = _possibleConstructorReturn(this, (SearchSuggestionScreen.__proto__ || Object.getPrototypeOf(SearchSuggestionScreen)).call(this, props));
+
+        _this.search = function (searchedText) {
+
+            _this.props.dispatch((0, _search.searchAction)(searchedText));
+            console.log(searchedText);
+
+            if (_this.state.underlineButton1) {
+                console.log(searchedText, 'first condition');
+
+                var food = _this.state.foodFromApi;
+                console.log("foooooooooooood", food);
+                var searchedFood = food.filter(function (food) {
+                    return food.name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1;
+                });
+                _this.setState({ searchedFood: searchedFood });
+                console.log('anjaliiiiiiiiiii', _this.state.searchedFood);
+            } else {
+                console.log(searchedText, 'second condition');
+                var searchedPlace = _place2.default.filter(function (place) {
+                    return place.name.toLowerCase().indexOf(searchedText.toLowerCase()) > -1;
+                });
+                _this.setState({ searchedPlace: searchedPlace });
+            }
+        };
+
+        _this.renderPlace = function (place) {
+            return _react3.default.createElement(
+                _reactNative.View,
+                {
+                    style: styles.listItem, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 108
+                    }
+                },
+                _react3.default.createElement(
+                    _reactNative.Text,
+                    {
+                        style: styles.listItemText,
+                        onPress: function onPress() {
+                            return _this._handlePressPlace(place);
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 110
+                        }
+                    },
+                    place.name,
+                    ', ',
+                    place.location
+                )
+            );
+        };
+
+        _this.renderFood = function (food) {
+            return _react3.default.createElement(
+                _reactNative.View,
+                {
+                    style: styles.listItem, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 121
+                    }
+                },
+                _react3.default.createElement(
+                    _reactNative.Text,
+                    {
+                        style: styles.listItemText,
+                        onPress: function onPress() {
+                            return _this._handlePressFood(food);
+                        },
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 123
+                        }
+                    },
+                    food.name,
+                    ', ',
+                    food.bestAt
+                )
+            );
+        };
+
+        _this._handlePressPlace = function (place) {
+            _this.props.navigation.navigate('placeDetail', { place: place });
+        };
+
+        _this._handlePressFood = function (food) {
+            _this.props.navigation.navigate('searchDetail', { foodId: food.id });
+        };
+
+        _this.state = {
+            underlineButton1: true,
+            underlineButton2: false,
+            searchedFood: [],
+            searchedPlace: [],
+            foodFromApi: []
+        };
+        return _this;
+    }
+
+    _createClass(SearchSuggestionScreen, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            return fetch('http://192.168.43.101:3000/searchItem').then(function (response) {
+                return response.json();
+            }).then(function (responseJson) {
+                _this2.setState({
+                    foodFromApi: responseJson.docs
+                }, function () {
+                    console.log(this.state.foodFromApi, "set in state");
+                });
+                console.log("response from api", responseJson.docs[0]);
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            return _react3.default.createElement(
+                _reactNative.View,
+                { style: styles.container, __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 143
+                    }
+                },
+                _react3.default.createElement(
+                    _reactNative.View,
+                    { style: { backgroundColor: '#e9e9e9' }, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 145
+                        }
+                    },
+                    _react3.default.createElement(_SearchBar2.default, {
+                        autoFocus: true,
+                        onChangeText: this.search,
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 146
+                        }
+                    }),
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        { style: { flexDirection: 'row' }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 152
+                            }
+                        },
+                        _react3.default.createElement(
+                            _reactNative.View,
+                            { style: { flex: 1 }, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 154
+                                }
+                            },
+                            _react3.default.createElement(
+                                _reactNative.TouchableOpacity,
+                                {
+                                    style: styles.button,
+                                    onPress: function onPress() {
+                                        return _this3.setState({ underlineButton1: true, underlineButton2: false });
+                                    },
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 155
+                                    }
+                                },
+                                _react3.default.createElement(
+                                    _StyledText.GloriaText,
+                                    {
+                                        style: this.state.underlineButton1 ? styles.textOnSelect : styles.defaultText, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 159
+                                        }
+                                    },
+                                    'what to eat?'
+                                )
+                            )
+                        ),
+                        _react3.default.createElement(
+                            _reactNative.View,
+                            { style: { flex: 1 }, __source: {
+                                    fileName: _jsxFileName,
+                                    lineNumber: 167
+                                }
+                            },
+                            _react3.default.createElement(
+                                _reactNative.TouchableOpacity,
+                                {
+                                    style: styles.button,
+                                    onPress: function onPress() {
+                                        return _this3.setState({ underlineButton1: false, underlineButton2: true });
+                                    },
+                                    __source: {
+                                        fileName: _jsxFileName,
+                                        lineNumber: 168
+                                    }
+                                },
+                                _react3.default.createElement(
+                                    _StyledText.GloriaText,
+                                    { style: this.state.underlineButton2 ? styles.textOnSelect : styles.defaultText, __source: {
+                                            fileName: _jsxFileName,
+                                            lineNumber: 172
+                                        }
+                                    },
+                                    ' where to eat? '
+                                )
+                            )
+                        )
+                    ),
+                    _react3.default.createElement(
+                        _reactNative.View,
+                        { style: { backgroundColor: '#f7f7f7', marginTop: 20 }, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 178
+                            }
+                        },
+                        _react3.default.createElement(_reactNative.ListView, {
+                            dataSource: ds.cloneWithRows(this.state.underlineButton1 ? this.state.searchedFood : this.state.searchedPlace),
+                            renderRow: this.state.underlineButton1 ? this.renderFood : this.renderPlace, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 180
+                            }
+                        })
+                    )
+                )
+            );
+        }
+    }, {
+        key: '_handlePressSearch',
+        value: function _handlePressSearch() {
+            console.log('search pressed');
+            this.props.navigation.navigate('searchSuggestion');
+        }
+    }]);
+
+    return SearchSuggestionScreen;
+}(_react3.default.Component));
+
+var styles = {
+    container: {
+        flex: 1,
+        backgroundColor: '#f7f7f7'
+    },
+    defaultText: {
+        fontSize: 15,
+        color: '#7e7e7e'
+    },
+    textOnSelect: {
+        fontSize: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: '#3d3d3d',
+        color: '#3d3d3d'
+    },
+    button: {
+        alignItems: 'center',
+
+        paddingTop: 8,
+        paddingBottom: 1
+    },
+    listItem: {
+        backgroundColor: '#fff',
+        borderBottomWidth: 2,
+        borderBottomColor: '#f7f7f7',
+        justifyContent: 'flex-start',
+        padding: 5
+    },
+    listItemText: {
+        fontSize: 20
+    }
+};
+
+exports.default = (0, _reactRedux.connect)()(SearchSuggestionScreen);

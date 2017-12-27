@@ -1,0 +1,9 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var searchAction = exports.searchAction = function searchAction(item) {
+  return {
+    type: 'SEARCH',
+    item: item
+  };
+};

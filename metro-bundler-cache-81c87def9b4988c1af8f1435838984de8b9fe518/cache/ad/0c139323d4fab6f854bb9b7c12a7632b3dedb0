@@ -1,0 +1,29 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _search = require('../actions/search');
+
+var initialState = {
+    item: ''
+};
+
+var reducer = function reducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+    var action = arguments[1];
+
+    switch (action.type) {
+        case 'SEARCH':
+            return _extends({}, state, {
+                item: action.item || ''
+            });
+        default:
+            return state;
+    }
+};
+
+console.log('initialState', initialState);
+console.log('searchState', reducer(initialState, (0, _search.searchAction)('anjali')));
+exports.default = reducer;

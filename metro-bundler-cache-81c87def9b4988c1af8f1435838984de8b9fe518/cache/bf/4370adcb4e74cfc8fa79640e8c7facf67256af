@@ -1,0 +1,162 @@
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = undefined;
+var _jsxFileName = '/home/anjali/eatburpRedux-master/components/RestaurantDetails.js';
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactNative = require('react-native');
+
+var _vectorIcons = require('@expo/vector-icons');
+
+var _expo = require('expo');
+
+var _reactNativeTouchableNativeFeedbackSafe = require('@expo/react-native-touchable-native-feedback-safe');
+
+var _reactNativeTouchableNativeFeedbackSafe2 = _interopRequireDefault(_reactNativeTouchableNativeFeedbackSafe);
+
+var _reactNavigation = require('react-navigation');
+
+var _SummaryCard = require('./SummaryCard');
+
+var _BestDishCard = require('./BestDishCard');
+
+var _MenuCard = require('./MenuCard');
+
+var _PhotoCard = require('./PhotoCard');
+
+var _RatingCard = require('./RatingCard');
+
+var _RestaurantDetailsCard = require('./RestaurantDetailsCard');
+
+var _AddressCard = require('./AddressCard');
+
+var _StyledText = require('./StyledText');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RestaurantDetails = function (_React$Component) {
+    _inherits(RestaurantDetails, _React$Component);
+
+    function RestaurantDetails(props) {
+        _classCallCheck(this, RestaurantDetails);
+
+        var _this = _possibleConstructorReturn(this, (RestaurantDetails.__proto__ || Object.getPrototypeOf(RestaurantDetails)).call(this, props));
+
+        _this.render = function () {
+            var restaurant = _this.props.restaurant;
+            console.log("summary----------", restaurant.bestDishes);
+
+            return _react2.default.createElement(
+                _reactNative.View,
+                {
+                    __source: {
+                        fileName: _jsxFileName,
+                        lineNumber: 38
+                    }
+                },
+                _react2.default.createElement(
+                    _reactNative.View,
+                    { style: styles.nameContainer, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 39
+                        }
+                    },
+                    _react2.default.createElement(
+                        _StyledText.BoldText,
+                        { style: styles.name, __source: {
+                                fileName: _jsxFileName,
+                                lineNumber: 40
+                            }
+                        },
+                        ' ',
+                        restaurant.name,
+                        ' '
+                    )
+                ),
+                _react2.default.createElement(
+                    _reactNative.View,
+                    {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 42
+                        }
+                    },
+                    _react2.default.createElement(_RestaurantDetailsCard.RestaurantDetailsCard, {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 43
+                        }
+                    }),
+                    _react2.default.createElement(_SummaryCard.SummaryCard, { text: restaurant.summary, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 44
+                        }
+                    }),
+                    _react2.default.createElement(_BestDishCard.BestDishCard, { dishes: restaurant.bestDishes, __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 45
+                        }
+                    }),
+                    _react2.default.createElement(_RatingCard.RatingCard, {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 46
+                        }
+                    }),
+                    _react2.default.createElement(_MenuCard.MenuCard, {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 47
+                        }
+                    }),
+                    _react2.default.createElement(_PhotoCard.PhotoCard, {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 48
+                        }
+                    }),
+                    _react2.default.createElement(_AddressCard.AddressCard, {
+                        __source: {
+                            fileName: _jsxFileName,
+                            lineNumber: 49
+                        }
+                    })
+                )
+            );
+        };
+
+        return _this;
+    }
+
+    return RestaurantDetails;
+}(_react2.default.Component);
+
+exports.default = RestaurantDetails;
+
+
+var HeroHeight = 370;
+
+var styles = _reactNative.StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#FAFAFA'
+    },
+    name: {
+        fontSize: 30
+    },
+    nameContainer: {
+        alignItems: 'center',
+        backgroundColor: '#ff8342',
+        margin: 2
+    }
+});
